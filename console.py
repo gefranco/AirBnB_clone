@@ -7,14 +7,15 @@ Console Module to handle Objects
 
 from cmd import Cmd
 from models import storage
+from models.base_model import BaseModel
 
 class HBNBCommand(Cmd):
-    """HBNBCommand Console class"""
+    '''HBNBCommand Console class'''
     
     prompt = "(hbnb)"
 
     def do_quit(self, inp):
-        """to quit from console"""
+        '''Quit command to exit the program'''
         return True
 
     def do_show(self, inp):
@@ -50,6 +51,18 @@ class HBNBCommand(Cmd):
         return
 
     do_EOF = do_quit
+
+    def do_create(self, inp):
+        '''Creates a new instance of BaseModel'''
+        if inp == '':
+            print('** class name missing **')
+            return
+        if inp != 'BaseModel':
+            print("** class doesn't exist **")
+            return
+        base_model = BaseModel()
+        base_model.save()
+        print(base_model.id)
 
 
 if __name__ == '__main__':
