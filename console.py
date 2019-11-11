@@ -27,6 +27,7 @@ class HBNBCommand(Cmd):
             print("** class doesn't exist **")
             return
         base_model = BaseModel()
+        base_model.save()
         print(base_model.id)
 
 
