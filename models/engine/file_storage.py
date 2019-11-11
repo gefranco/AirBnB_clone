@@ -27,7 +27,6 @@ class FileStorage:
 
             from models.base_model import BaseModel 
             for key, obj_json in FileStorage.__objects.items():
-                print(obj_json) 
                 FileStorage.__objects[key] = BaseModel(**obj_json)
             
         return FileStorage.__objects
