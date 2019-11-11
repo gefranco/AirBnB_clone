@@ -6,8 +6,10 @@ Console Module to handle Objects
 
 
 from cmd import Cmd
-from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+
+
 class HBNBCommand(Cmd):
     '''HBNBCommand Console class'''
     
@@ -16,6 +18,38 @@ class HBNBCommand(Cmd):
     def do_quit(self, inp):
         '''Quit command to exit the program'''
         return True
+
+    def do_show(self, inp):
+        """
+        Prints the string representation of an 
+        instance based on the class name and id
+        """
+
+        list_param = inp.split()
+
+        if len(list_param) is 0:
+            print('** class name missing **')
+            return
+
+        if list_param[0] != 'BaseModel':
+            print('** class doesn\'t exist **')
+            return
+
+        if len(list_param) < 2:
+            print('** instance id missing **')
+            return
+
+        obj_key = list_param[0] + "." + list_param[1]
+        all_objs = storage.all()
+
+        for key in all_objs.keys():
+               
+            if obj_key == key:
+                print(all_objs[obj_key])
+                return
+
+        print('** no instance found **')
+        return
 
     do_EOF = do_quit
 
