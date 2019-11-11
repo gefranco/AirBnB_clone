@@ -12,7 +12,7 @@ from models.base_model import BaseModel
 
 class HBNBCommand(Cmd):
     '''HBNBCommand Console class'''
-    
+
     prompt = "(hbnb)"
 
     def do_quit(self, inp):
@@ -21,7 +21,7 @@ class HBNBCommand(Cmd):
 
     def do_show(self, inp):
         """
-        Prints the string representation of an 
+        Prints the string representation of an
         instance based on the class name and id
         """
 
@@ -43,7 +43,7 @@ class HBNBCommand(Cmd):
         all_objs = storage.all()
 
         for key in all_objs.keys():
-               
+
             if obj_key == key:
                 print(all_objs[obj_key])
                 return
@@ -67,7 +67,7 @@ class HBNBCommand(Cmd):
 
     def do_destroy(self, inp):
         '''Deletes an instance based on the class name and id'''
-        if inp =='':
+        if inp == '':
             print('** class name missing **')
             return
         list_param = inp.split()
@@ -85,11 +85,6 @@ class HBNBCommand(Cmd):
             return
         del all_objects[key_object]
         storage.save()
-
-
-
-
-
 
 
 if __name__ == '__main__':
