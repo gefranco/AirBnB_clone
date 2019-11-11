@@ -5,10 +5,13 @@ Console Module to handle Objects
 """
 
 
-import cmd 
+from cmd import Cmd
 
-class HBNBCommand(cmd.Cmd):
+class HBNBCommand(Cmd):
     """HBNBCommand Console class"""
+    
+    prompt = "(hbnb)"
 
 
-MyPrompt().cmdloop()
+
+HBNBCommand().cmdloop()
