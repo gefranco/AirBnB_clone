@@ -7,6 +7,7 @@ Console Module to handle Objects
 
 from cmd import Cmd
 from models.base_model import BaseModel
+from models import storage
 class HBNBCommand(Cmd):
     '''HBNBCommand Console class'''
     
@@ -29,6 +30,32 @@ class HBNBCommand(Cmd):
         base_model = BaseModel()
         base_model.save()
         print(base_model.id)
+
+    def do_destroy(self, inp):
+        '''Deletes an instance based on the class name and id'''
+        if inp =='':
+            print('** class name missing **')
+            return
+        list_param = inp.split()
+        if list_param[0] != 'BaseModel':
+            print("** class doesn't exist **")
+            return
+        if len(list_param) < 2:
+            print("** instance id missing **")
+            return
+
+        key_object = list_param[0] + "." + list_param[1]
+        all_objects = storage.all()
+        if key_object not in all_objects:
+            print("** no instance found **")
+            return
+        del all_objects[key_object]
+        storage.save()
+
+
+
+
+
 
 
 if __name__ == '__main__':
