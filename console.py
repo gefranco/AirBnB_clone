@@ -12,6 +12,12 @@ class HBNBCommand(Cmd):
     
     prompt = "(hbnb)"
 
+    def do_quit(self, inp):
+        """to quit from console"""
+        return True
+
+    do_EOF = do_quit
 
 
-HBNBCommand().cmdloop()
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
