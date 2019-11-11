@@ -56,7 +56,7 @@ class HBNBCommand(Cmd):
         '''Prints all string representation of all instances'''
         list_param = inp.split()
 
-        if list_param[0] != 'BaseModel':
+        if inp == '' or list_param[0] != 'BaseModel':
             print('** class doesn\'t exist **')
             return
 
