@@ -42,14 +42,13 @@ class HBNBCommand(Cmd):
         obj_key = list_param[0] + "." + list_param[1]
         all_objs = storage.all()
 
-        for key in all_objs.keys():
-
-            if obj_key == key:
-                print(all_objs[obj_key])
-                return
-
-        print('** no instance found **')
+        if obj_key not in all_objs:
+            print("** no instance found **")
+            return
+        
+        print(all_objs[obj_key])
         return
+
 
     do_EOF = do_quit
 
