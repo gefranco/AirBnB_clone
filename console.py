@@ -52,6 +52,24 @@ class HBNBCommand(Cmd):
 
     do_EOF = do_quit
 
+    def do_all(self, inp):
+        '''Prints all string representation of all instances'''
+        list_param = inp.split()
+
+        if list_param[0] != 'BaseModel':
+            print('** class doesn\'t exist **')
+            return
+
+        all_objs_list = []
+        all_objs = storage.all()
+
+        for key in all_objs.keys():
+
+            all_objs_list.append(all_objs[key].__str__())
+
+        print(all_objs_list)
+        return
+
     def do_create(self, inp):
         '''Creates a new instance of BaseModel'''
         if inp == '':
