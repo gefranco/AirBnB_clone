@@ -4,7 +4,6 @@
 Console Module to handle Objects
 """
 
-
 from cmd import Cmd
 from models import storage
 from models.entitys import entitys
@@ -145,6 +144,8 @@ class HBNBCommand(Cmd):
         setattr(obj, list_param[2], list_param[3])
         storage.save()
 
+    def emptyline(self):
+        return
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
