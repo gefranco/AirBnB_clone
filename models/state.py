@@ -10,15 +10,22 @@ class State(BaseModel):
     """
     name = ""
 
-    def __init__(self, **kargs):
+    def __init__(self, *args, **kwargs):
         """
         init method
 
         Args:
             Recieve keyworded and non keyworded args
         """
+        if kwargs is not None and len(kwargs) > 0:
+            super.__init__(args, **kwargs)
 
-        super().__init__(**kargs)
+        elif args is not None and len(args) > 0:
+            print('im using args')
+
+        else:
+            super().__init__()
+
 
     def to_dict(self):
         """
