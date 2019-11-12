@@ -1,22 +1,30 @@
 #!/usr/bin/python3
+"""
+File Storage Module
+"""
+
 
 import os
 import json
 
+
 class FileStorage:
+    '''FileStorage Class'''
 
     __file_path = "file.json"
     __objects = {}
 
-
     def all(self):
+        '''Show all instances'''
         return FileStorage.__objects
 
     def new(self, obj):
+        '''Create new instance'''
         FileStorage.__objects[obj.__class__.__name__ + "." + obj.id] = obj
 
     def reload(self):
-        
+        '''Recover all the instance created'''
+
         if not os.path.isfile(FileStorage.__file_path):
             return FileStorage.__objects
 
@@ -28,9 +36,8 @@ class FileStorage:
             from models.base_model import BaseModel
 
             from models.state import State
-            
-            from models.entitys import entitys
 
+            from models.entitys import entitys
 
             for key, obj_json in jobjects.items():
                 clase = key.split(".")[0]
@@ -38,10 +45,8 @@ class FileStorage:
 
         return FileStorage.__objects
 
-
-
-
     def save(self):
+        '''Save instance in json format into a file'''
 
         with open(FileStorage.__file_path, mode="w", encoding="utf-8") as f:
             f.write("{")
@@ -49,9 +54,22 @@ class FileStorage:
             for key, value in FileStorage.__objects.items():
                 json_obj = json.dumps(value.to_dict())
                 if i == 0:
-                    f.write("\""+value.__class__.__name__ + "."+value.id+"\"" +":"+json_obj)
+                    f.write(
+                        "\"" +
+                        value.__class__.__name__ +
+                        "." +
+                        value.id +
+                        "\"" +
+                        ":" +
+                        json_obj)
                 else:
-                    f.write(",\""+value.__class__.__name__ + "."+value.id+"\"" +":"+json_obj)
+                    f.write(
+                        ",\"" +
+                        value.__class__.__name__ +
+                        "." +
+                        value.id +
+                        "\"" +
+                        ":" +
+                        json_obj)
                 i += 1
             f.write("}")
-

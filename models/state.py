@@ -3,8 +3,10 @@
 
 from models.base_model import BaseModel
 
+
 class State(BaseModel):
     """
+    State Class
     """
     name = ""
 
@@ -17,7 +19,6 @@ class State(BaseModel):
         """
 
         super().__init__(**kargs)
-            
 
     def to_dict(self):
         """

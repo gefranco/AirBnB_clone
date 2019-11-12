@@ -6,6 +6,7 @@ User class module
 
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     '''User class'''
 
@@ -15,6 +16,7 @@ class User(BaseModel):
     last_name = ""
 
     def __init__(self, *args, **kwargs):
+        ''' init method of User'''
 
         if kwargs is not None and len(kwargs) > 0:
             super.__init__(self, **kwargs)
@@ -26,6 +28,7 @@ class User(BaseModel):
             super().__init__()
 
     def to_dict(self):
+        '''to_dict method of User'''
 
         dictionary = super().to_dict()
         dictionary['__class__'] = self.__class__.__name__

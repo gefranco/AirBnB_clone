@@ -5,6 +5,7 @@ import uuid
 import datetime
 from models import storage
 
+
 class BaseModel:
     """
     BaseModel that defines all common
@@ -27,10 +28,11 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key == "created_at" or key == "updated_at":
-                        setattr(self, key, datetime.datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                        setattr(
+                            self, key, datetime.datetime.strptime(
+                                value, '%Y-%m-%dT%H:%M:%S.%f'))
                     else:
                         setattr(self, key, value)
-
 
         elif args is not None and len(args) > 0:
             print("using args")
@@ -41,7 +43,6 @@ class BaseModel:
             self.updated_at = datetime.datetime.now()
 
             storage.new(self)
-            
 
     def __str__(self):
         """

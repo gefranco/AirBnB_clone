@@ -9,6 +9,7 @@ import datetime
 
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
 
     """Unittest for BaseModel"""
@@ -20,10 +21,10 @@ class TestBaseModel(unittest.TestCase):
         """
         dictionary = {"Name": 'bob', "Num": 1}
         instance = BaseModel(**dictionary)
-        
+
         self.assertEqual(instance.Name, 'bob')
         self.assertEqual(instance.Num, 1)
-  
+
     def test_init_with_args(self):
         """
         Creating an instance passing
@@ -41,7 +42,8 @@ class TestBaseModel(unittest.TestCase):
 
         self.maxDiff = None
 
-        expected = "[BaseModel] ({}) {}\n".format(instance.id, instance.__dict__)
+        expected = "[BaseModel] ({}) {}\n".format(
+            instance.id, instance.__dict__)
 
         with patch('sys.stdout', new=StringIO()) as fake_out:
             print(instance)
@@ -53,16 +55,20 @@ class TestBaseModel(unittest.TestCase):
 
         before = instance.updated_at
 
-        now = instance.save()
+        instance.save()
+
+        now = instance.updated_at
 
         self.assertNotEqual(before, now)
- 
+
     def testing_to_dict(self):
+        """Testing to_dict method"""
         instance = BaseModel()
- 
+
         dictionary = instance.to_dict()
 
         self.assertIsInstance(dictionary, dict)
-        
+
+
 if __name__ == '__main__':
     unittest.main()
