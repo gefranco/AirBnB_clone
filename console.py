@@ -45,10 +45,9 @@ class HBNBCommand(Cmd):
         if obj_key not in all_objs:
             print("** no instance found **")
             return
-        
+
         print(all_objs[obj_key])
         return
-
 
     do_EOF = do_quit
 
@@ -103,16 +102,40 @@ class HBNBCommand(Cmd):
         del all_objects[key_object]
         storage.save()
 
-
     def do_update(self, inp):
 
         list_param = inp.split()
+
+        if inp == '':
+            print('** class name missing **')
+            return
+
+        if list_param[0] != 'BaseModel':
+            print("** class doesn't exist **")
+            return
+
+        if len(list_param) < 2:
+            print("** instance id missing **")
+            return
+
+        if len(list_param) < 3:
+            print("** attribute name missing **")
+            return
+
+        if len(list_param) < 4:
+            print("** value missing **")
+            return
+
         all_objs = storage.all()
         key_obj = list_param[0] + "." + list_param[1]
         obj = all_objs[key_obj]
+
+        if key_obj not in all_objs:
+            print("** no instance found **")
+            return
+
         setattr(obj, list_param[2], list_param[3])
         storage.save()
-
 
 
 if __name__ == '__main__':
