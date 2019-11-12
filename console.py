@@ -8,7 +8,7 @@ Console Module to handle Objects
 from cmd import Cmd
 from models import storage
 from models.base_model import BaseModel
-
+from models.state import State
 
 class HBNBCommand(Cmd):
     '''HBNBCommand Console class'''
@@ -75,10 +75,11 @@ class HBNBCommand(Cmd):
         if inp == '':
             print('** class name missing **')
             return
-        if inp != 'BaseModel':
+        if inp != 'BaseModel' and inp != 'State':
             print("** class doesn't exist **")
             return
-        base_model = BaseModel()
+        base_model = globals()[inp]()
+
         base_model.save()
         print(base_model.id)
 
