@@ -10,6 +10,8 @@ from models import storage
 from models.entitys import entitys
 from models.base_model import BaseModel
 from models.state import State
+from models.user import User
+
 
 class HBNBCommand(Cmd):
     '''HBNBCommand Console class'''
@@ -65,7 +67,10 @@ class HBNBCommand(Cmd):
 
         for key in all_objs.keys():
 
-            all_objs_list.append(all_objs[key].__str__())
+            class_names = key.split('.')
+
+            if class_names[0] == list_param[0]:
+                all_objs_list.append(all_objs[key].__str__())
 
         print(all_objs_list)
         return
@@ -89,7 +94,7 @@ class HBNBCommand(Cmd):
             print('** class name missing **')
             return
         list_param = inp.split()
-        if list_param[0]  not in entitys:
+        if list_param[0] not in entitys:
             print("** class doesn't exist **")
             return
         if len(list_param) < 2:
@@ -105,6 +110,7 @@ class HBNBCommand(Cmd):
         storage.save()
 
     def do_update(self, inp):
+        '''Update the instance'''
 
         list_param = inp.split()
 
