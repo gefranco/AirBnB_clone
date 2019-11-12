@@ -104,5 +104,16 @@ class HBNBCommand(Cmd):
         storage.save()
 
 
+    def do_update(self, inp):
+
+        list_param = inp.split()
+        all_objs = storage.all()
+        key_obj = list_param[0] + "." + list_param[1]
+        obj = all_objs[key_obj]
+        setattr(obj, list_param[2], list_param[3])
+        storage.save()
+
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
