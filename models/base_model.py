@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-"""BaseModel Module"""
+"""
+================
+BaseModel Module
+================
+"""
+
 
 import uuid
 import datetime
