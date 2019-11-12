@@ -23,12 +23,19 @@ class FileStorage:
         with open(FileStorage.__file_path, mode="r", encoding="utf-8") as f:
             strjson = f.read()
 
-            FileStorage.__objects = json.loads(strjson)
+            jobjects = json.loads(strjson)
 
-            from models.base_model import BaseModel 
-            for key, obj_json in FileStorage.__objects.items():
-                FileStorage.__objects[key] = BaseModel(**obj_json)
+            from models.base_model import BaseModel
+
+            from models.state import State
             
+            from models.entitys import entitys
+
+
+            for key, obj_json in jobjects.items():
+                clase = key.split(".")[0]
+                FileStorage.__objects[key] = entitys[clase](**obj_json)
+
         return FileStorage.__objects
 
 
