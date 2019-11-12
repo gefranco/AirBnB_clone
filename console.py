@@ -7,6 +7,7 @@ Console Module to handle Objects
 
 from cmd import Cmd
 from models import storage
+from models.entitys import entitys
 from models.base_model import BaseModel
 from models.state import State
 
@@ -31,7 +32,7 @@ class HBNBCommand(Cmd):
             print('** class name missing **')
             return
 
-        if list_param[0] != 'BaseModel':
+        if list_param[0] not in entitys:
             print('** class doesn\'t exist **')
             return
 
@@ -55,7 +56,7 @@ class HBNBCommand(Cmd):
         '''Prints all string representation of all instances'''
         list_param = inp.split()
 
-        if inp == '' or list_param[0] != 'BaseModel':
+        if inp == '' or list_param[0] not in entitys:
             print('** class doesn\'t exist **')
             return
 
@@ -74,7 +75,7 @@ class HBNBCommand(Cmd):
         if inp == '':
             print('** class name missing **')
             return
-        if inp != 'BaseModel' and inp != 'State':
+        if inp not in entitys:
             print("** class doesn't exist **")
             return
         base_model = globals()[inp]()
@@ -88,7 +89,7 @@ class HBNBCommand(Cmd):
             print('** class name missing **')
             return
         list_param = inp.split()
-        if list_param[0] != 'BaseModel':
+        if list_param[0]  not in entitys:
             print("** class doesn't exist **")
             return
         if len(list_param) < 2:
@@ -111,7 +112,7 @@ class HBNBCommand(Cmd):
             print('** class name missing **')
             return
 
-        if list_param[0] != 'BaseModel':
+        if list_param[0] not in entitys:
             print("** class doesn't exist **")
             return
 
