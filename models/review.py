@@ -28,7 +28,6 @@ class Review(BaseModel):
         else:
             super().__init__()
 
-
     def to_dict(self):
         """
         to_dict method

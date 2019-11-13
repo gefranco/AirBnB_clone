@@ -6,4 +6,4 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 entitys = {'BaseModel': BaseModel, 'State': State, 'User': User,
-        'City':City, 'Amenity': Amenity, 'Place': Place, 'Review':Review}
+           'City': City, 'Amenity': Amenity, 'Place': Place, 'Review': Review}
