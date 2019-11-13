@@ -150,15 +150,22 @@ class HBNBCommand(Cmd):
 
     def emptyline(self):
         return
+    
+    def do_count(self, inp):
+        all_objs = storage.all()
+        count_objs = 0
+        for key in all_objs.keys():
+            if inp in key:
+                count_objs += 1
+        print(count_objs)
 
 
-    cmds = {"all()": do_all}
+    cmds = {"all()": do_all, "count()": do_count}
     def default(self, inp):
         args = inp.split(".")
-        if args[1] not in HBNBCommand.cmds:
-            print("*** Unknown syntax: " + inp)
-            return
-        HBNBCommand.cmds[args[1]](self, str(args[0]))
-
+        if len(args) > 1 and  args[1] in HBNBCommand.cmds:
+            HBNBCommand.cmds[args[1]](self, str(args[0]))
+        else:
+            print("*** Unknown syntax:" + inp)
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
