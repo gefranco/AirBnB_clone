@@ -160,12 +160,23 @@ class HBNBCommand(Cmd):
         print(count_objs)
 
 
-    cmds = {"all()": do_all, "count()": do_count}
+    cmds = {"all()": do_all, "count()": do_count, "show()": do_show}
     def default(self, inp):
         args = inp.split(".")
-        if len(args) > 1 and  args[1] in HBNBCommand.cmds:
-            HBNBCommand.cmds[args[1]](self, str(args[0]))
-        else:
-            print("*** Unknown syntax:" + inp)
+
+        if len(args) > 1:
+            if args[1].startswith("show"):
+                replace = args[1][args[1].find('(') + 1 : args[1].find(')')]
+                args[1] = args[1].replace(replace, "") 
+                replace = replace.replace("\"", "")
+                HBNBCommand.cmds[args[1]](self, args[0] + " " + replace)
+                return
+            if args[1] in HBNBCommand.cmds:
+
+                HBNBCommand.cmds[args[1]](self, str(args[0]))
+            else:
+                print("*** Unknown syntax:" + inp)
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
