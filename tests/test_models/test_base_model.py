@@ -75,7 +75,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIs(type(instance.id), str)
         self.assertTrue(isinstance(instance.created_at, datetime))
         self.assertTrue(isinstance(instance.updated_at, datetime))
-        self.assertNotEqual(instance.created_at, instance.updated_at)
         self.assertFalse(instance.updated_at == datetime.now())
 
 
