@@ -41,7 +41,7 @@ class BaseModel:
                         setattr(self, key, value)
 
         elif args is not None and len(args) > 0:
-            print("using args")
+            pass
 
         else:
             self.id = str(uuid.uuid4())

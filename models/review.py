@@ -1,14 +1,16 @@
 #!/usr/bin/python3
-"""BaseModel Module"""
+"""review module"""
 
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
+class Review(BaseModel):
     """
-    State Class
+    Review
     """
-    name = ""
+    place_id = ""
+    user_id = ""
+    text = ""
 
     def __init__(self, *args, **kwargs):
         """
@@ -35,6 +37,7 @@ class State(BaseModel):
         of __dict__ of an instance
         """
         dictionary = super().to_dict()
-
-        dictionary["name"] = self.name
+        dictionary["place_id"] = self.place_id
+        dictionary["user_id"] = self.user_id
+        dictionary["text"] = self.text
         return dictionary

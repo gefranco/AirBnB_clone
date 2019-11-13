@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""BaseModel Module"""
+"""amenity Module"""
 
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
+class Amenity(BaseModel):
     """
-    State Class
+    Amenity
     """
     name = ""
 
@@ -35,6 +35,5 @@ class State(BaseModel):
         of __dict__ of an instance
         """
         dictionary = super().to_dict()
-
         dictionary["name"] = self.name
         return dictionary

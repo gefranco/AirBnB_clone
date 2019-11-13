@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""BaseModel Module"""
+"""city Module"""
 
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
+class City(BaseModel):
     """
-    State Class
+    State City
     """
+    state_id = ""
     name = ""
 
     def __init__(self, *args, **kwargs):
@@ -35,6 +36,6 @@ class State(BaseModel):
         of __dict__ of an instance
         """
         dictionary = super().to_dict()
-
+        dictionary["state_id"] = self.state_id
         dictionary["name"] = self.name
         return dictionary

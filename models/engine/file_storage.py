@@ -39,6 +39,14 @@ class FileStorage:
 
             from models.entitys import entitys
 
+            from models.city import City
+
+            from models.amenity import Amenity
+
+            from models.place import Place
+
+            from models.review import Review
+
             for key, obj_json in jobjects.items():
                 clase = key.split(".")[0]
                 FileStorage.__objects[key] = entitys[clase](**obj_json)
