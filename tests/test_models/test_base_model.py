@@ -6,7 +6,7 @@ import unittest
 from io import StringIO
 from unittest.mock import patch
 import datetime
-
+from datetime import datetime
 from models.base_model import BaseModel
 
 
@@ -68,6 +68,15 @@ class TestBaseModel(unittest.TestCase):
         dictionary = instance.to_dict()
 
         self.assertIsInstance(dictionary, dict)
+
+    def test_attributes(self):
+        """Testing attributes"""
+        instance = BaseModel()
+        self.assertIs(type(instance.id), str)
+        self.assertTrue(isinstance(instance.created_at, datetime))
+        self.assertTrue(isinstance(instance.updated_at, datetime))
+        self.assertNotEqual(instance.created_at, instance.updated_at)
+        self.assertFalse(instance.updated_at == datetime.now())
 
 
 if __name__ == '__main__':
