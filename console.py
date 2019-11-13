@@ -149,5 +149,13 @@ class HBNBCommand(Cmd):
     def emptyline(self):
         return
 
+    cmds = {"all()": do_all}
+    def default(self, inp):
+        args = inp.split(".")
+        if args[1] not in HBNBCommand.cmds:
+            print("*** Unknown syntax: " + inp)
+            return
+        HBNBCommand.cmds[args[1]](self, str(args[0]))
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
