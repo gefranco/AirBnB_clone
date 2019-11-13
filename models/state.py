@@ -18,7 +18,7 @@ class State(BaseModel):
             Recieve keyworded and non keyworded args
         """
         if kwargs is not None and len(kwargs) > 0:
-            super.__init__(args, **kwargs)
+            super().__init__(**kwargs)
 
         elif args is not None and len(args) > 0:
             print('im using args')
