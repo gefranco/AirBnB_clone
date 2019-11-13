@@ -19,7 +19,7 @@ class User(BaseModel):
         ''' init method of User'''
 
         if kwargs is not None and len(kwargs) > 0:
-            super.__init__(self, **kwargs)
+            super().__init__(**kwargs)
 
         elif args is not None and len(args) > 0:
             print('im using args')
