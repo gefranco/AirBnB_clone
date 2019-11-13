@@ -14,6 +14,8 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+
+
 class HBNBCommand(Cmd):
     '''HBNBCommand Console class'''
 
@@ -148,6 +150,7 @@ class HBNBCommand(Cmd):
 
     def emptyline(self):
         return
+
 
     cmds = {"all()": do_all}
     def default(self, inp):
