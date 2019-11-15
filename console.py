@@ -61,7 +61,11 @@ class HBNBCommand(Cmd):
         '''Prints all string representation of all instances'''
         list_param = inp.split()
 
-        if inp == '' or list_param[0] not in entitys:
+        if inp == '':
+            print(storage.all())
+            return
+
+        if list_param[0] not in entitys:
             print('** class doesn\'t exist **')
             return
 
@@ -139,12 +143,12 @@ class HBNBCommand(Cmd):
 
         all_objs = storage.all()
         key_obj = list_param[0] + "." + list_param[1]
-        obj = all_objs[key_obj]
 
         if key_obj not in all_objs:
             print("** no instance found **")
             return
 
+        obj = all_objs[key_obj]
         setattr(obj, list_param[2], list_param[3])
         storage.save()
 
