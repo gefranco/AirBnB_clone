@@ -154,7 +154,7 @@ class HBNBCommand(Cmd):
 
     def emptyline(self):
         return
-    
+
     def do_count(self, inp):
         all_objs = storage.all()
         count_objs = 0
@@ -163,15 +163,15 @@ class HBNBCommand(Cmd):
                 count_objs += 1
         print(count_objs)
 
-
     cmds = {"all()": do_all, "count()": do_count, "show()": do_show}
+
     def default(self, inp):
         args = inp.split(".")
 
         if len(args) > 1:
             if args[1].startswith("show"):
-                replace = args[1][args[1].find('(') + 1 : args[1].find(')')]
-                args[1] = args[1].replace(replace, "") 
+                replace = args[1][args[1].find('(') + 1:args[1].find(')')]
+                args[1] = args[1].replace(replace, "")
                 replace = replace.replace("\"", "")
                 HBNBCommand.cmds[args[1]](self, args[0] + " " + replace)
                 return
