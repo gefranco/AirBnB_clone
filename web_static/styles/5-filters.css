@@ -44,6 +44,7 @@ button:hover{
 }
 
 h3 {
+	padding-left: 30px;
 	font-weight: 600;
 	top:50%;
 	-ms-transform: translateY(-50%);
@@ -51,6 +52,7 @@ h3 {
 
 }
 h4 {
+	padding-left: 30px;
 	font-weight: 400;
 	font-size: 14px;
 	top:50%;
