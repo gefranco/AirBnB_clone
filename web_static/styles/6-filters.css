@@ -80,7 +80,7 @@ h3 {
 	transform: translateY(-50%);
 
 }
-h4 {
+.filters h4 {
 	padding-left: 30px;
 	font-weight: 400;
 	font-size: 14px;
