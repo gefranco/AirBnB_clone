@@ -1,10 +1,11 @@
-#title-places{
-	font-size: 30px;
-	text-align: left;
-}
 .places {
 	margin: auto;
 	text-align: center;
+}
+.places h1 {
+	#title-places{
+        font-size: 30px;
+        text-align: left;
 }
 
 article {
@@ -15,7 +16,6 @@ article {
 	border-radius: 4px;
 	display: inline-block;
 }
-
 
 article h2 {
 	font-size: 30px;

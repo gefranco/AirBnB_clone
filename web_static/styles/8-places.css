@@ -1,12 +1,11 @@
-#title-places{
-	font-size: 30px;
-	text-align: left;
-}
 .places {
 	margin: auto;
 	text-align: center;
 }
-
+.places h1{
+        font-size: 30px;
+        text-align: left;
+}
 article {
 	width: 390px;
 	padding:  20px ;
