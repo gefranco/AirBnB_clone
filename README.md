@@ -1,4 +1,12 @@
-# AirBnB clone - The console
+<h1 align="center">AirBnB clone - The console</h1>
+
+<p align="center">
+  <img src="https://github.com/gefranco/AirBnB_clone/blob/master/assets/hbnb-logo.png"
+       alt="Holbertonbnb logo"
+       width="500"
+  >
+</p>
+
 The global approach of this project is about making an AirBnb clone, but on this one we will focus on only making our console (command interpreter).
 
 ### Whats a command interpreter?
